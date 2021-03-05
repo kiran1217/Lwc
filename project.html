@@ -1,4 +1,5 @@
 
+
 <template>
     <lightning-button
       variant="brand"
@@ -113,6 +114,29 @@
                 ></lightning-combobox>
               </div>
             </div>
+          <!--    <lightning-file-upload
+                name="Upload file"
+                  label="Upload file"
+                  style="padding-bottom: 20px; font-weight: bold">
+            </lightning-file-upload>-->
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                <div class="slds-file-selector slds-file-selector_files">
+                <input type="file" class="slds-file-selector__input slds-assistive-text" onchange={openFileUpload}
+                 id="file-upload-input-01" aria-labelledby="file-selector-primary-label file-selector-secondary-label" />
+                <label class="slds-file-selector__body" for="file-upload-input-01" id="file-selector-secondary-label" >
+                <span class="slds-file-selector__button slds-button slds-button_neutral" style="color: white; background-color:#1153ac;">
+                    <lightning-icon icon-name="action:upload" size="small" style="color: white; padding:1px;background-color: #1153ac;"></lightning-icon>
+                <svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+                </svg>Select Files</span>
+                </label>
+                </div>
+                </div>
+                </div>
+                <template if:true={fileName}>
+                <div style="color: black;">{fileName}</div>
+                </template>
+
             <p style="color: #707070; padding-bottom: 10px"><b>DESCRIPTION</b></p>
             <lightning-input-rich-text value={myVal} formats={formats} class=" resetfields">
             </lightning-input-rich-text>
@@ -123,23 +147,17 @@
               <button
                 class="slds-button slds-button_brand"
                 onclick={closeModal}
-                title="Cancel"
-              >
-                Cancel
+                title="Cancel" > Cancel
               </button>
               <button
                 class="slds-button slds-button_brand"
                 onclick={saveClick}
-                title="Save"
-              >
-                Save
+                title="Save"> Save
               </button>
               <button
                 class="slds-button slds-button_brand"
                 onclick={saveAndNewClick}
-                title="Save & New"
-              >
-                Save & New
+                title="Save & New" > Save & New
               </button>
             </div>
           </footer>
