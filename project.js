@@ -10,7 +10,6 @@ import Project_Name from '@salesforce/schema/Project__c.Name';
 import User from '@salesforce/schema/Project__c.User__c';
 import Description from '@salesforce/schema/Project__c.Description__c';
 import End_Date from '@salesforce/schema/Project__c.End_Date__c';
-
 export default class NewProjectPopup extends LightningElement {
   desc 
   name 
@@ -19,36 +18,28 @@ export default class NewProjectPopup extends LightningElement {
    statusValues;
    projectTypeValues;
      priorityTypeValues;
-
-  //Boolean tracked variable to indicate if modal is open or not default value is false as modal is closed when page is loaded
   @track isModalOpen = false;
   openModal() {
-    // to open modal set isModalOpen tarck value as true
     this.isModalOpen = true;
   }
   closeModal() {
-    // to close modal set isModalOpen tarck value as false
     this.isModalOpen = false;
   }
   submitDetails() {
     this.isModalOpen = false;
   }
-
   @wire(getPicklistValues, {
     recordTypeId: '012000000000000AAA',
     fieldApiName: STATUS_FIELD
    }) status;
-
 @wire(getPicklistValues, {
     recordTypeId: '012000000000000AAA', 
    fieldApiName: PRIORITY_FIELD
 }) priority;
-
 @wire(getPicklistValues, {
    recordTypeId: '012000000000000AAA', 
   fieldApiName: PROJECT_TYPE
 }) project;
-
   formats = [
     "font",
     "size",
@@ -89,9 +80,6 @@ this.Enddate=event.target.value;
     handlechangePriority(event){
         this.priorityTypeValues=event.target.value;
   }
-
-      
-
     createProject(){
 
             const fields={};
@@ -112,10 +100,7 @@ this.Enddate=event.target.value;
                   variant: "success"
                 }),);
                 this.handleReset();
-                if(this.check){ 
-                  // pop closes when record saved.
-                 // location.reload(true);
-                
+                if(this.check){
                   this.isModalOpen=false
                   }
             }).catch((error) => {
@@ -127,10 +112,6 @@ this.Enddate=event.target.value;
                 })
               );
             });
-
-
-    
-
     }
     saveClick() {
       if (this.checkError()) {
@@ -138,9 +119,7 @@ this.Enddate=event.target.value;
         this.createProject();
       }
     }
-  
-    // saves record and keeps the popup open on clicking save and new
-    saveAndNewClick() {
+  saveAndNewClick() {
       if (this.checkError() ) {
         this.check = false;
         this.createProject();
